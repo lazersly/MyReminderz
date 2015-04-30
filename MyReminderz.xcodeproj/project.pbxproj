@@ -17,6 +17,7 @@
 		AD4C7C9B1AEEEF3200A95C18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4C7C9A1AEEEF3200A95C18 /* MapKit.framework */; };
 		AD4C7C9E1AEF517C00A95C18 /* MyStack.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4C7C9D1AEF517C00A95C18 /* MyStack.m */; };
 		AD4C7CA11AEF54C600A95C18 /* MyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4C7CA01AEF54C600A95C18 /* MyQueue.m */; };
+		AD4C7CAA1AF174A800A95C18 /* AddRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4C7CA91AF174A800A95C18 /* AddRegionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		AD4C7C9D1AEF517C00A95C18 /* MyStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStack.m; sourceTree = "<group>"; };
 		AD4C7C9F1AEF54C600A95C18 /* MyQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQueue.h; sourceTree = "<group>"; };
 		AD4C7CA01AEF54C600A95C18 /* MyQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQueue.m; sourceTree = "<group>"; };
+		AD4C7CA81AF174A800A95C18 /* AddRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRegionViewController.h; path = ../AddRegionViewController.h; sourceTree = "<group>"; };
+		AD4C7CA91AF174A800A95C18 /* AddRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddRegionViewController.m; path = ../AddRegionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +75,6 @@
 		AD4C7C681AEEEECD00A95C18 = {
 			isa = PBXGroup;
 			children = (
-				AD4C7C9A1AEEEF3200A95C18 /* MapKit.framework */,
 				AD4C7C731AEEEECD00A95C18 /* MyReminderz */,
 				AD4C7C8D1AEEEECE00A95C18 /* MyReminderzTests */,
 				AD4C7C721AEEEECD00A95C18 /* Products */,
@@ -95,6 +97,8 @@
 				AD4C7C791AEEEECD00A95C18 /* AppDelegate.m */,
 				AD4C7C7B1AEEEECD00A95C18 /* ViewController.h */,
 				AD4C7C7C1AEEEECD00A95C18 /* ViewController.m */,
+				AD4C7CA81AF174A800A95C18 /* AddRegionViewController.h */,
+				AD4C7CA91AF174A800A95C18 /* AddRegionViewController.m */,
 				AD4C7C7E1AEEEECD00A95C18 /* Main.storyboard */,
 				AD4C7C811AEEEECD00A95C18 /* Images.xcassets */,
 				AD4C7C831AEEEECD00A95C18 /* LaunchScreen.xib */,
@@ -110,6 +114,7 @@
 		AD4C7C741AEEEECD00A95C18 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD4C7C9A1AEEEF3200A95C18 /* MapKit.framework */,
 				AD4C7C751AEEEECD00A95C18 /* Info.plist */,
 				AD4C7C761AEEEECD00A95C18 /* main.m */,
 			);
@@ -238,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD4C7CAA1AF174A800A95C18 /* AddRegionViewController.m in Sources */,
 				AD4C7C9E1AEF517C00A95C18 /* MyStack.m in Sources */,
 				AD4C7C7D1AEEEECD00A95C18 /* ViewController.m in Sources */,
 				AD4C7C7A1AEEEECD00A95C18 /* AppDelegate.m in Sources */,
@@ -437,6 +443,7 @@
 				AD4C7C961AEEEECE00A95C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD4C7C971AEEEECE00A95C18 /* Build configuration list for PBXNativeTarget "MyReminderzTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +452,7 @@
 				AD4C7C991AEEEECE00A95C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
