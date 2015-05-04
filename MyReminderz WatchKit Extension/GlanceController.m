@@ -11,6 +11,7 @@
 
 @interface GlanceController()
 
+@property (strong, nonatomic) IBOutlet WKInterfaceLabel *regionsLabel;
 @end
 
 
@@ -20,6 +21,14 @@
     [super awakeWithContext:context];
 
     // Configure interface objects here.
+  
+  CLLocationManager *locMan = [[CLLocationManager alloc] init];
+  
+  NSArray *regions = locMan.monitoredRegions.allObjects;
+  NSInteger count = regions.count;
+  NSString *countString = [NSString stringWithFormat:@"%ld",(long)count];
+  
+  [self.regionsLabel setText:countString];
 }
 
 - (void)willActivate {

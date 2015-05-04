@@ -26,6 +26,9 @@
 		AD4C7CCA1AF2C92A00A95C18 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4C7CC81AF2C92A00A95C18 /* Interface.storyboard */; };
 		AD4C7CCC1AF2C92A00A95C18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4C7CCB1AF2C92A00A95C18 /* Images.xcassets */; };
 		AD4C7CCF1AF2C92A00A95C18 /* MyReminderz WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD4C7CAF1AF2C92900A95C18 /* MyReminderz WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD8D969A1AF7EDFD00FE77D0 /* RegionRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8D96991AF7EDFD00FE77D0 /* RegionRowController.m */; };
+		AD8D969D1AF7F3C400FE77D0 /* MapInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8D969C1AF7F3C400FE77D0 /* MapInterfaceController.m */; };
+		AD8D96A01AF7F83500FE77D0 /* MapInterfaceContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8D969F1AF7F83500FE77D0 /* MapInterfaceContext.m */; };
 		AD94D2841AF2DD6A007CCD0B /* HashTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AD94D2831AF2DD6A007CCD0B /* HashTable.m */; };
 		AD94D2871AF2DDEC007CCD0B /* HashBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = AD94D2861AF2DDEC007CCD0B /* HashBucket.m */; };
 /* End PBXBuildFile section */
@@ -103,6 +106,12 @@
 		AD4C7CC71AF2C92A00A95C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD4C7CC91AF2C92A00A95C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		AD4C7CCB1AF2C92A00A95C18 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AD8D96981AF7EDFD00FE77D0 /* RegionRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionRowController.h; sourceTree = "<group>"; };
+		AD8D96991AF7EDFD00FE77D0 /* RegionRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionRowController.m; sourceTree = "<group>"; };
+		AD8D969B1AF7F3C400FE77D0 /* MapInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInterfaceController.h; sourceTree = "<group>"; };
+		AD8D969C1AF7F3C400FE77D0 /* MapInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapInterfaceController.m; sourceTree = "<group>"; };
+		AD8D969E1AF7F83500FE77D0 /* MapInterfaceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInterfaceContext.h; sourceTree = "<group>"; };
+		AD8D969F1AF7F83500FE77D0 /* MapInterfaceContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapInterfaceContext.m; sourceTree = "<group>"; };
 		AD94D2821AF2DD6A007CCD0B /* HashTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashTable.h; sourceTree = "<group>"; };
 		AD94D2831AF2DD6A007CCD0B /* HashTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashTable.m; sourceTree = "<group>"; };
 		AD94D2851AF2DDEC007CCD0B /* HashBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashBucket.h; sourceTree = "<group>"; };
@@ -214,10 +223,16 @@
 			children = (
 				AD4C7CB41AF2C92A00A95C18 /* InterfaceController.h */,
 				AD4C7CB51AF2C92A00A95C18 /* InterfaceController.m */,
+				AD8D969E1AF7F83500FE77D0 /* MapInterfaceContext.h */,
+				AD8D969F1AF7F83500FE77D0 /* MapInterfaceContext.m */,
+				AD8D969B1AF7F3C400FE77D0 /* MapInterfaceController.h */,
+				AD8D969C1AF7F3C400FE77D0 /* MapInterfaceController.m */,
 				AD4C7CB71AF2C92A00A95C18 /* NotificationController.h */,
 				AD4C7CB81AF2C92A00A95C18 /* NotificationController.m */,
 				AD4C7CBA1AF2C92A00A95C18 /* GlanceController.h */,
 				AD4C7CBB1AF2C92A00A95C18 /* GlanceController.m */,
+				AD8D96981AF7EDFD00FE77D0 /* RegionRowController.h */,
+				AD8D96991AF7EDFD00FE77D0 /* RegionRowController.m */,
 				AD4C7CBD1AF2C92A00A95C18 /* Images.xcassets */,
 				AD4C7CB11AF2C92A00A95C18 /* Supporting Files */,
 			);
@@ -440,6 +455,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8D96A01AF7F83500FE77D0 /* MapInterfaceContext.m in Sources */,
+				AD8D969D1AF7F3C400FE77D0 /* MapInterfaceController.m in Sources */,
+				AD8D969A1AF7EDFD00FE77D0 /* RegionRowController.m in Sources */,
 				AD4C7CB91AF2C92A00A95C18 /* NotificationController.m in Sources */,
 				AD4C7CB61AF2C92A00A95C18 /* InterfaceController.m in Sources */,
 				AD4C7CBC1AF2C92A00A95C18 /* GlanceController.m in Sources */,
