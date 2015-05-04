@@ -12,4 +12,8 @@
 
 -(instancetype)initWithSize:(NSInteger)size;
 
+-(void)addObject:(id)object forKey:(NSString *)key;
+-(id)objectForKey:(NSString *)key;
+-(void)removeObjectForKey:(NSString *)key;
+
 @end

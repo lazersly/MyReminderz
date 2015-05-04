@@ -43,6 +43,68 @@
   return total % self.size;
 }
 
+-(id)objectForKey:(NSString *)key {
+  
+  NSInteger hashedKey = [self hash:key];
+  
+  HashBucket *bucket = self.items[hashedKey];
+  
+  while (bucket) {
+    if ([bucket.key isEqualToString:key]) {
+      return bucket.data;
+    } else {
+      bucket = bucket.next;
+    }
+  }
+  return nil;
+}
+
+-(void)removeObjectForKey:(NSString *)key {
+  NSInteger hashedKey = [self hash:key];
+  
+  HashBucket *bucket = self.items[hashedKey];
+  HashBucket *previousBucket;
+  
+  while (bucket) {
+    if ([bucket.key isEqualToString:key]) {
+      // Make the next bucket the current bucket of the previous bucket
+      if (!previousBucket) {
+        if (bucket.next == nil) {
+          bucket.data = nil;
+          bucket.key = nil;
+        } else {
+          self.items[hashedKey] = bucket.next;
+        }
+      } else {
+        previousBucket.next = bucket.next;
+      }
+    }
+    previousBucket = bucket;
+    bucket = bucket.next;
+  }
+  
+}
+
+-(void)addObject:(id)object forKey:(NSString *)key {
+  
+  [self removeObjectForKey:key];
+  
+  NSInteger index = [self hash:key];
+  
+  HashBucket *bucket = self.items[index];
+  
+  if (!bucket.key) {
+    bucket.key = key;
+    bucket.data = object;
+  } else {
+    HashBucket *newBucket = [[HashBucket alloc] init];
+    newBucket.key = key;
+    newBucket.next = bucket;
+    self.items[index] = newBucket;
+  }
+  
+}
+
 
 
 @end
