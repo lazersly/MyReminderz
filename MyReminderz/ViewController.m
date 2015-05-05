@@ -44,7 +44,7 @@
     
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = coordinate;
-    annotation.title = @"Location-based Reminder";
+    annotation.title = @"Add location-based reminder";
     
     [self.mapView addAnnotation:annotation];
   }
