@@ -72,17 +72,18 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-  CLLocation *firstLocation = locations.firstObject;
   
 }
 
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
   UILocalNotification *localNotification = [[UILocalNotification alloc] init];
   localNotification.alertTitle = @"You've arrived!";
-  localNotification.alertBody = @"Welcome to here.";
-  localNotification.alertAction = @"Region Entered";
+  localNotification.alertBody = [NSString stringWithFormat: @"You've entered your %@ region", region.identifier];
+  localNotification.alertAction = @"Open MyReminderz";
   
   [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+  
+  NSLog(@"Region Entered: %@", region.identifier);
 }
 
 #pragma mark - NSNotificationCenter

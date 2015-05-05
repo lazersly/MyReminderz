@@ -7,37 +7,85 @@
 //
 
 #import "AddRegionViewController.h"
+#import <MapKit/MapKit.h>
 
-const CLLocationDistance regionRadius = 200;
+@interface AddRegionViewController () <UITextFieldDelegate, MKMapViewDelegate>
 
-@interface AddRegionViewController () <UITextFieldDelegate>
-
-@property (strong, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet MKMapView *mapPreview;
+@property (strong, nonatomic) IBOutlet UISlider *distanceSlider;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (strong, nonatomic) NSNumber *distance;
 
 @end
 
 @implementation AddRegionViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-  self.textField.delegate = self;
+  [super viewDidLoad];
+  // Do any additional setup after loading the view.
+  
+  float maxDistance = 800;
+  float minDistance = 10;
+  float maxDistanceOffset = 50;
+  
+  
+  self.distance = [NSNumber numberWithInteger:200];
+  self.distanceSlider.maximumValue = maxDistance;
+  self.distanceSlider.minimumValue = minDistance;
+  self.distanceSlider.value = self.distance.floatValue;
+  
+  self.mapPreview.delegate = self;
+  self.mapPreview.mapType = MKMapTypeHybrid;
+  self.mapPreview.userInteractionEnabled = NO;
+  self.mapPreview.region = MKCoordinateRegionMakeWithDistance(self.coordinate, maxDistance * 2 + maxDistanceOffset, maxDistance * 2 + maxDistanceOffset);
+  
 }
 
-- (IBAction)addRegionButtonPressed:(id)sender {
-
-  CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:self.coordinate radius:regionRadius identifier:self.textField.text];
+- (IBAction)addRegionPressed:(id)sender {
   
-  NSDictionary *userInfo = @{@"region" : region};
+  if ( [CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+    CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:self.coordinate radius:self.distance.floatValue identifier:self.textField.text];
+    
+    NSDictionary *userInfo = @{@"region" : region};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RegionRegistered" object:self userInfo:userInfo];
+    
+    [self dismissViewControllerAnimated:true completion:nil];
+  }
   
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"RegionRegistered" object:self userInfo:userInfo];
-  
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Distance and Slider
+
+- (IBAction)distanceSliderValueChanged:(UISlider *)sender {
+  self.distance = [NSNumber numberWithFloat:sender.value];
+}
+
+-(void)setDistance:(NSNumber *)distance {
+  _distance = distance;
+  self.distanceLabel.text = [NSString stringWithFormat:@"%ld", (long)_distance.integerValue];
+  [self.mapPreview removeOverlays:self.mapPreview.overlays];
+  [self.mapPreview addOverlay:[MKCircle circleWithCenterCoordinate:self.coordinate radius:_distance.floatValue]];
+}
+
+#pragma mark - MKMapViewDelegate
+
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+  MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+  circleRenderer.strokeColor = [UIColor whiteColor];
+  circleRenderer.fillColor = [UIColor lightGrayColor];
+  circleRenderer.alpha = 0.5;
+  
+  return circleRenderer;
+}
+
+#pragma mark - UITextFieldDelegate
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
-  return YES;
+  return true;
 }
-
 @end
+
