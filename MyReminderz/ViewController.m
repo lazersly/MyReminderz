@@ -106,6 +106,12 @@
 
 #pragma mark - Map View Methods
 
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+  
+  float viewDistance = 2000;
+  
+  [mapView setRegion:MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, viewDistance, viewDistance) animated:YES];
+}
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
   //  if ([annotation isKindOfClass:[MKUserLocation class]]) {
